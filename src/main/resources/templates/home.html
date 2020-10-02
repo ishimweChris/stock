@@ -2,9 +2,18 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+      <title>Insert title here</title>
+      <div data-th-replace="Link/CSS :: myCss"></div>
 </head>
 <body>
-      tekskjf
+<div data-th-replace="/Layout/Sidebar :: mySidebar"></div>
+<div class="main-content" id="panel">
+      <div data-th-replace="/Layout/Navbar :: myHeader"></div>
+</div>
+
+<div data-th-replace="/Link/Script :: myScript"></div>
+<script>
+
+</script>
 </body>
 </html>

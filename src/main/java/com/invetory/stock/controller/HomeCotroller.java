@@ -9,7 +9,6 @@ public class HomeCotroller {
 
 	@RequestMapping(value = "",method = RequestMethod.GET)
 	public String home() {
-		System.out.print("test");
 		return "home";
 	}
 }
