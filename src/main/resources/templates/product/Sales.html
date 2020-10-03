@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Product</title>
+    <div data-th-replace="Link/CSS :: myCss"></div>
+</head>
+<body>
+<div data-th-replace="/Layout/Sidebar :: mySidebar"></div>
+<div class="main-content" id="panel">
+    <div data-th-replace="/Layout/Navbar :: myHeader"></div>
+    <div class="row">
+        <div class="container-fluid " id="container">
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="card"><h1 class="ml-3">SALES</h1></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="make_sales" class="btn btn-primary"
+                       >MAKE SALES</a>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Unity Price</th>
+                            <th>Quantity in stock</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+     aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">Type your modal title</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="pcategory">
+                                    <option>Product Category</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Product Name" type="text" id="pname">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Price" type="number" id="pprice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="punit">
+                                    <option value="UNIT">UNIT</option>
+                                    <option value="BOX">BOXED</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Quantity" type="number" id="pquantity">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveProduct">Save changes</button>
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div data-th-replace="/Link/Script :: myScript"></div>
+<script>
+
+    $(function () {
+
+
+    })
+
+
+
+
+</script>
+</body>
+</html>
