@@ -1,6 +1,8 @@
 package com.invetory.stock.controller;
 
+import com.invetory.stock.service.ExpenseService;
 import com.invetory.stock.service.ProductService;
+import com.invetory.stock.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,12 @@ public class WebController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private SalesService salesService;
+
+    @Autowired
+    private ExpenseService expenseService;
+
 
     @RequestMapping(value = "{option}",method = RequestMethod.GET)
     public String productPages(@PathVariable("option")String option, HttpSession session, ModelMap model){
@@ -23,10 +31,14 @@ public class WebController {
               model.addAttribute("products",productService.findByDeleted());
               return "product/Products";
           }else if(option.equalsIgnoreCase("sales_list")){
+              model.addAttribute("sales",salesService.findByDeleted());
               return "product/Sales";
           }else if(option.equalsIgnoreCase("make_sales")){
              return "product/MakeSales";
-          }else {
+          }else if(option.equalsIgnoreCase("expenses_list")){
+              model.addAttribute("expenses",expenseService.findByDeleted());
+              return "product/expenses";
+          }else{
               return "";
           }
        }catch (Exception e){

@@ -23,20 +23,22 @@
                        >MAKE SALES</a>
                 </div>
                 <div class="col-md-12 mt-2">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="salesTable">
                         <thead>
                         <tr>
-                            <th>Category</th>
-                            <th>Name</th>
+                            <th>Products</th>
+                            <th>Quantity</th>
                             <th>Unity Price</th>
-                            <th>Quantity in stock</th>
-                            <th>Action</th>
+                            <th>Total Price</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-
-                        </tr>
+                            <tr th:each="u : ${sales}">
+                                <th><span th:utext="${u.getProduct().getName()}"></span></th>
+                                <th><span th:utext="${u.getQuantity()+ ' ' +u.getSaleStatus()}"></span></th>
+                                <th><span th:utext="${u.getUnityPrice()}"></span></th>
+                                <th><span th:utext="${u.getUnityPrice()*u.getQuantity()}"></span></th>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -133,7 +135,7 @@
 
     $(function () {
 
-
+       $("#salesTable").DataTable();
     })
 
 

@@ -1,6 +1,7 @@
 package com.invetory.stock.domain;
 
 public enum Unity {
-    BOX,UNIT
+    BOX,UNIT,PIECES
+
 
 }

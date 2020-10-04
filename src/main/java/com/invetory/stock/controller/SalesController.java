@@ -68,38 +68,45 @@ public class SalesController {
                 }
             }else{
                 if(sl.quantity>product.getItemInPackage()){
-                    double box=sl.quantity%product.getItemInPackage();
+                    int boxround=(int)sl.quantity/product.getItemInPackage();
+                    double box=boxround;
                     double item=sl.quantity-(product.getItemInPackage()*box);
                    if(product.getQuantity()>=box && (product.getItemNumber()>=item|| product.getQuantity()>=box+1)){
-
-                       sales.setUnityPrice(sl.unitPrice);
-                       sales.setProduct(product);
-                       sales.setQuantity(sl.quantity);
-                       sales.setSaleStatus(Unity.valueOf(sl.unit));
-                       salesService.create(sales);
-                       double boxLeft=product.getQuantity();
+                     if(box>product.getQuantity()){
+                         map.put("code",402);
+                         map.put("msg","Not enough quantity");
+                         return new ResponseEntity<Object>(map, HttpStatus.OK);
+                     }else{
+                         sales.setUnityPrice(sl.unitPrice);
+                         sales.setProduct(product);
+                         sales.setQuantity(sl.quantity);
+                         sales.setSaleStatus(Unity.PIECES);
+                         salesService.create(sales);
+                         double boxLeft=product.getQuantity()-box;
 
 ////                       Update Product
-                       if(product.getItemNumber()==0 && item>0){
-                           boxLeft=boxLeft-1;
-                           product.setItemNumber(product.getItemInPackage()-item);
-                           product.setQuantity(boxLeft);
-                       }else if(product.getItemNumber()<item){
-                           System.out.println(item +" "+box+" "+(product.getItemInPackage()*box)+" "+sl.quantity);
-                           boxLeft=boxLeft-1;
-                           double reduceItem=item-product.getItemNumber();
-                           product.setItemNumber(product.getItemInPackage()-reduceItem);
-                           product.setQuantity(boxLeft);
-                       }else{
-                           boxLeft=boxLeft-1;
-                           product.setItemNumber(product.getItemNumber()-item);
-                           product.setQuantity(boxLeft);
-                       }
-                       productService.save(product);
-                       map.put("code",200);
-                       map.put("object",sales);
-                       map.put("msg","Sale are made successfully");
-                       return new ResponseEntity<Object>(map, HttpStatus.OK);
+                         if(product.getItemNumber()==0 && item>0){
+                             boxLeft=boxLeft-1;
+                             product.setItemNumber(product.getItemInPackage()-item);
+                             product.setQuantity(boxLeft);
+                         }else if(product.getItemNumber()<item){
+                             System.out.println(item +" "+box+" "+(product.getItemInPackage()*box)+" "+sl.quantity);
+                             boxLeft=boxLeft-1;
+                             double reduceItem=item-product.getItemNumber();
+                             product.setItemNumber(product.getItemInPackage()-reduceItem);
+                             product.setQuantity(boxLeft);
+                         }else{
+                             boxLeft=boxLeft-1;
+                             product.setItemNumber(product.getItemNumber()-item);
+                             product.setQuantity(boxLeft);
+                         }
+                         productService.save(product);
+                         map.put("code",200);
+                         map.put("object",sales);
+                         map.put("msg","Sale are made successfully");
+                         return new ResponseEntity<Object>(map, HttpStatus.OK);
+                     }
+
                    }else{
                        map.put("code",402);
                        map.put("msg","Not enough quantity");
@@ -109,7 +116,7 @@ public class SalesController {
                     sales.setUnityPrice(sl.unitPrice);
                     sales.setProduct(product);
                     sales.setQuantity(sl.quantity);
-                    sales.setSaleStatus(Unity.valueOf(sl.unit));
+                    sales.setSaleStatus(Unity.PIECES);
                     salesService.create(sales);
                     product.setQuantity(product.getQuantity()-1);
                     productService.save(product);
@@ -120,7 +127,7 @@ public class SalesController {
                     sales.setUnityPrice(sl.unitPrice);
                     sales.setProduct(product);
                     sales.setQuantity(sl.quantity);
-                    sales.setSaleStatus(Unity.valueOf(sl.unit));
+                    sales.setSaleStatus(Unity.PIECES);
                     salesService.create(sales);
                     double boxLeft=product.getQuantity();
                     if(product.getItemNumber()==0 && sl.quantity>0){

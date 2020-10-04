@@ -4,6 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 
@@ -19,7 +20,7 @@ public class Purchase implements Serializable {
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date doneAt; // = new Timestamp(new Date().getTime());
+    private Date doneAt= new Timestamp(new Date().getTime());
     private String doneBy = "";
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdatedAt; // = null;

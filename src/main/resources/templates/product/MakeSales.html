@@ -286,12 +286,27 @@
             contentType: 'application/json',
             success:function (data) {
                 console.log(data);
-                $.each(data.categories, function (i, item) {
-                    $('#pcategory').append($('<option>', {
-                        value: item.uuid,
-                        text : item.name
-                    }));
-                });
+              if(data.code==200){
+                  Swal.fire({
+                      type: 'success',
+                      title: 'Product is added successfully',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+                  setTimeout(()=>{
+                      window.location.href="make_sales"
+                  },3000)
+              }else{
+                  Swal.fire({
+                      type: 'success',
+                      title: data.msg,
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+                  setTimeout(()=>{
+                      window.location.href="make_sales"
+                  },3000)
+              }
             },
             error:function () {
 
