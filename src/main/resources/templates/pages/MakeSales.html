@@ -244,6 +244,11 @@
 
     $(document).on("change","#pcategory",function () {
         var category=$(this).val();
+        $("#products").empty();
+        $('#products').append($('<option>', {
+            value: '',
+            text : "--select product--"
+        }));
         $.each(products,function (i,item) {
             if(item.category.uuid===category){
                 $('#products').append($('<option>', {
