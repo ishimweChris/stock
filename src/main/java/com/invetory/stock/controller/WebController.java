@@ -29,19 +29,20 @@ public class WebController {
        try{
           if(option.contains("products_list")){
               model.addAttribute("products",productService.findByDeleted());
-              return "product/Products";
+              return "pages/Products";
           }else if(option.equalsIgnoreCase("sales_list")){
               model.addAttribute("sales",salesService.findByDeleted());
-              return "product/Sales";
+              return "pages/Sales";
           }else if(option.equalsIgnoreCase("make_sales")){
-             return "product/MakeSales";
+             return "pages/MakeSales";
           }else if(option.equalsIgnoreCase("expenses_list")){
               model.addAttribute("expenses",expenseService.findByDeleted());
-              return "product/expenses";
+              return "pages/expenses";
           }else{
               return "";
           }
        }catch (Exception e){
+           e.printStackTrace();
          return "";
        }
     }

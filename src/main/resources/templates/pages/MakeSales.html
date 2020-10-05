@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Product</title>
+    <div data-th-replace="Link/CSS :: myCss"></div>
+</head>
+<body>
+<div data-th-replace="/Layout/Sidebar :: mySidebar"></div>
+<div class="main-content" id="panel">
+    <div data-th-replace="/Layout/Navbar :: myHeader"></div>
+    <div class="row">
+        <div class="container-fluid " id="container">
+
+            <div class="row mt-5">
+                <div class="col-md-2">
+                    <div class="card"><h1 class="ml-3">MAKE SALES</h1></div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12 mt-2">
+                   <div class="card">
+                       <div class="col-md-6">
+                          <div class="row mt-5">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                          </div>
+                                          <select class="form-control" data-toggle="select" id="pcategory">
+                                              <option>Product Category</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                          </div>
+                                          <select class="form-control" data-toggle="select" id="products">
+                                              <option>--Select Products--</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                          </div>
+                                          <select class="form-control" data-toggle="select" id="unit">
+                                              <option value="UNIT">UNIT</option>
+                                              <option value="BOX">BOXED</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="Quantity" type="number" id="quantity">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                          </div>
+                                          <input class="form-control text-darker"  placeholder="unity price" type="number" id="unitPrice" >
+                                          <div class="input-group-append">
+                                              <span class="input-group-text">RWF</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text">Total Price</span>
+                                          </div>
+                                          <input class="form-control text-darker" placeholder="" type="number" id="price" readonly>
+                                          <div class="input-group-append">
+                                              <span class="input-group-text">RWF</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-6 mb-2">
+                                  <button type="button" class="btn btn-primary" id="saveSales">Make SALES</button>
+                              </div>
+                              <div class="col-md-6 mb-2">
+                                  <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                              </div>
+
+                          </div>
+                       </div>
+                       <div class="col-md-6">
+
+                       </div>
+                   </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+     aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">Type your modal title</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="pcategory">
+                                    <option>Product Category</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Product Name" type="text" id="pname">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Price" type="number" id="pprice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="punit">
+                                    <option value="UNIT">UNIT</option>
+                                    <option value="BOX">BOXED</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Quantity" type="number" id="pquantity">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveProduct">Save changes</button>
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div data-th-replace="/Link/Script :: myScript"></div>
+<script>
+
+    $(function () {
+     findCategory();
+     findProduct();
+
+    })
+
+ var products=[]
+    function findCategory() {
+        $.ajax({
+            url: 'products/categories/',
+            type: 'GET',
+            success:function (data) {
+                console.log(data);
+                $.each(data.categories, function (i, item) {
+                    $('#pcategory').append($('<option>', {
+                        value: item.uuid,
+                        text : item.name
+                    }));
+                });
+            },
+            error:function () {
+
+            }
+        })
+    }
+
+    function  findProduct() {
+        $.ajax({
+            url: 'products',
+            type: 'GET',
+            success:function (data) {
+                console.log(data)
+                products=data.products;
+            },
+            error:function () {
+
+            }
+        })
+    }
+
+
+    $(document).on("change","#pcategory",function () {
+        var category=$(this).val();
+        $("#products").empty();
+        $('#products').append($('<option>', {
+            value: '',
+            text : "--select product--"
+        }));
+        $.each(products,function (i,item) {
+            if(item.category.uuid===category){
+                $('#products').append($('<option>', {
+                    value: item.uuid,
+                    text : item.name
+                }));
+            }
+        })
+    })
+
+
+
+
+     $(document).on("keyup","#unitPrice",function () {
+         if($("#quantity").val().length>0){
+             $("#price").val($(this).val()*$("#quantity").val())
+         }
+     })
+
+    $(document).on("keyup","#quantity",function () {
+        if($("#unitPrice").val().length>0){
+            $("#price").val($(this).val()*$("#unitPrice").val())
+        }
+    })
+
+
+    $(document).on("click","#saveSales",function(){
+        var sales={
+            "product":$("#products").val(),
+            "unit":$("#unit").val(),
+            "quantity":$("#quantity").val(),
+            "unitPrice":$("#unitPrice").val(),
+            "totalPrice":$("#price").val()
+        }
+        console.log(sales)
+        $.ajax({
+            url: 'sales/create/',
+            type: 'POST',
+            data: JSON.stringify(sales),
+            contentType: 'application/json',
+            success:function (data) {
+                console.log(data);
+              if(data.code==200){
+                  Swal.fire({
+                      type: 'success',
+                      title: 'Product is added successfully',
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+                  setTimeout(()=>{
+                      window.location.href="make_sales"
+                  },3000)
+              }else{
+                  Swal.fire({
+                      type: 'success',
+                      title: data.msg,
+                      showConfirmButton: false,
+                      timer: 1500
+                  })
+                  setTimeout(()=>{
+                      window.location.href="make_sales"
+                  },3000)
+              }
+            },
+            error:function () {
+
+            }
+        })
+    })
+
+
+</script>
+</body>
+</html>
