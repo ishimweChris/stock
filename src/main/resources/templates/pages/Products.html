@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Product</title>
+    <div data-th-replace="Link/CSS :: myCss"></div>
+</head>
+<body>
+<div data-th-replace="/Layout/Sidebar :: mySidebar"></div>
+<div class="main-content" id="panel">
+    <div data-th-replace="/Layout/Navbar :: myHeader"></div>
+    <div class="row">
+        <div class="container-fluid " id="container">
+
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="card"><h1 class="ml-3">PRODUCTS</h1></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal"
+                       data-target="#modal-default">NEW PRODUCT</a>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity in stock</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="u : ${products}">
+                              <td><span th:utext="v"></span></td>
+                              <td><span th:utext="${u.getName()}"></span></td>
+                              <td><span th:utext="${u.getPrice()}"></span></td>
+                              <td><span th:utext="${u.getQuantity()}"></span></td>
+                              <td>
+                                  <div class="dropdown">
+                                      <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          ACTION
+                                      </button>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="#"><span class="fas fa-eye"></span> Details</a>
+                                          <a class="dropdown-item deleteProduct" href="#"  th:attr="data-uuid=${u.getUuid()}" >Delete</a>
+                                          <a class="dropdown-item" href="#">Update</a>
+                                      </div>
+                                  </div>
+                                  <input type="hidden" th:value="${u.getUuid()}"  class="productId">
+                              </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
+     aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-default">Adding Products</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="pcategory">
+                                    <option>Product Category</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Product Name" type="text" id="pname">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Price" type="number" id="pprice">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" data-toggle="select" id="punit">
+                                    <option value="UNIT">UNIT</option>
+                                    <option value="BOX">BOXED</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Quantity" type="number" id="pquantity">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveProduct">Save changes</button>
+                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div data-th-replace="/Link/Script :: myScript"></div>
+<script>
+
+    $(function () {
+        findCategory();
+
+
+    })
+
+    $(document).on("click","#saveProduct",function () {
+
+        var product={
+            "name":$("#pname").val(),
+            "categoryUuid":$("#pcategory").val(),
+            "unit":$("#punit").val(),
+            "quantity":$("#pquantity").val(),
+            "unityPrice":$("#pprice").val()
+        }
+        
+        $.ajax({
+            url:'products/create',
+            type:'POST',
+            data: JSON.stringify(product),
+            contentType: 'application/json',
+            success:function (data) {
+
+                if(data.code==200){
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Product is added successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(()=>{
+                        window.location.href="products_list"
+                    },3000)
+                    $("#modal-default").modal("hide");
+                }else{
+                    Swal.fire({
+                        type: 'error',
+                        title: 'Error occurred try again',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            },
+            error:function () {
+                
+            }
+        })
+    })
+
+    
+    function findCategory() {
+        $.ajax({
+            url: 'products/categories/',
+            type: 'GET',
+            success:function (data) {
+                console.log(data);
+                $.each(data.categories, function (i, item) {
+                    $('#pcategory').append($('<option>', {
+                        value: item.uuid,
+                        text : item.name
+                    }));
+                });
+            },
+            error:function () {
+
+            }
+        })
+    }
+
+
+
+
+
+    $(document).on("click",".deleteProduct",function () {
+
+        swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: 'products/delete/'+$(this).data("uuid"),
+                    type: 'GET',
+                    success:function (data) {
+                      console.log(data)
+                        if(data.code==200){
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Product is deleted successfully',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            setTimeout(()=>{
+                                window.location.href="products_list"
+                            },3000)
+                        }else{
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Error occurred try again',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    },
+                    error:function () {
+
+                    }
+                 })
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
