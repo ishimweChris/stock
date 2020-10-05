@@ -80,9 +80,9 @@
 
                grossIncome=totalSales-totalExpanse
                 console.log(grossIncome,totalSales,totalExpanse)
-                $("#sales").text("RWF "+totalSales);
-                $("#expenses").text("RWF "+totalExpanse);
-                $("#income").text("RWF "+grossIncome)
+                $("#sales").text(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'rwf' }).format(totalSales));
+                $("#expenses").text(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'rwf' }).format(totalExpanse));
+                $("#income").text(new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'rwf' }).format(grossIncome))
             },
             error:function () {
 
