@@ -3,6 +3,7 @@ package com.invetory.stock.controller;
 import com.invetory.stock.domain.Product;
 import com.invetory.stock.domain.Sales;
 import com.invetory.stock.domain.Unity;
+import com.invetory.stock.service.ExpenseService;
 import com.invetory.stock.service.ProductService;
 import com.invetory.stock.service.SalesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class SalesController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ExpenseService expenseService;
 
     @RequestMapping(value="",method = RequestMethod.GET)
     public ResponseEntity<Object> allProducts(HttpSession session, ModelMap model) {
@@ -157,6 +161,21 @@ public class SalesController {
         }
 
     }
+
+
+    @RequestMapping(value="income",method = RequestMethod.GET)
+    public ResponseEntity<Object> viewIncomeData(HttpSession session, ModelMap model) {
+        Map<String,Object> map=new HashMap<>();
+        try{
+            map.put("sales",salesService.findByDeleted());
+            map.put("expenses",expenseService.findByDeleted());
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }catch (Exception ex){
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }
+    }
+
+
 
 
 

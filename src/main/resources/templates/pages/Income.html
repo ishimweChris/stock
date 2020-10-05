@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Product</title>
+    <div data-th-replace="Link/CSS :: myCss"></div>
+</head>
+<body>
+<div data-th-replace="/Layout/Sidebar :: mySidebar"></div>
+<div class="main-content" id="panel">
+    <div data-th-replace="/Layout/Navbar :: myHeader"></div>
+    <div class="row">
+        <div class="container-fluid " id="container">
+
+            <div class="row mt-5">
+                <div class="col-md-2">
+                    <div class=""><h1 class="ml-3">INCOME</h1></div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12 mt-2">
+                    <div class="card">
+                        <div class="col-md-6 offset-3">
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <tr>
+                                              <td><h2>Total sales</h2></td>
+                                                 <td><span id="sales"></span></td>
+                                          </tr>
+                                          <tr>
+                                              <td><h2>Total Expenses</h2></td>
+                                              <td><span id="expenses"></span></td>
+                                          </tr>
+                                          <tr>
+                                              <td><h2>Gross Income</h2></td>
+                                              <td><span id="income"></span></td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div data-th-replace="/Link/Script :: myScript"></div>
+<script>
+
+    $(function () {
+        findIncome()
+    })
+
+    var totalSales=0;
+    var totalExpanse=0;
+    var grossIncome=0
+    function findIncome() {
+        $.ajax({
+            url: 'sales/income',
+            type: 'GET',
+            success:function (data) {
+               console.log(data)
+                $.each(data.sales,function (i,item) {
+                    totalSales=totalSales+(item.unityPrice*item.quantity);
+                })
+
+                $.each(data.expenses,function (i,item) {
+                    totalExpanse=totalExpanse+item.amount;
+                })
+
+               grossIncome=totalSales-totalExpanse
+                console.log(grossIncome,totalSales,totalExpanse)
+                $("#sales").text("RWF "+totalSales);
+                $("#expenses").text("RWF "+totalExpanse);
+                $("#income").text("RWF "+grossIncome)
+            },
+            error:function () {
+
+            }
+        })
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

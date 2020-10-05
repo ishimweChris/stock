@@ -38,6 +38,8 @@ public class WebController {
           }else if(option.equalsIgnoreCase("expenses_list")){
               model.addAttribute("expenses",expenseService.findByDeleted());
               return "pages/expenses";
+          }else if(option.equalsIgnoreCase("income_list")){
+              return "pages/Income";
           }else{
               return "";
           }
