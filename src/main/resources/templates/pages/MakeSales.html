@@ -23,86 +23,82 @@
                    <div class="card">
                        <div class="col-md-6">
                           <div class="row mt-5">
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                          </div>
-                                          <select class="form-control" data-toggle="select" id="pcategory">
-                                              <option>Product Category</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                          </div>
-                                          <select class="form-control" data-toggle="select" id="products">
-                                              <option>--Select Products--</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                          </div>
-                                          <select class="form-control" data-toggle="select" id="unit">
-                                              <option value="UNIT">UNIT</option>
-                                              <option value="BOX">BOXED</option>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="Quantity" type="number" id="quantity">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                          </div>
-                                          <input class="form-control text-darker"  placeholder="unity price" type="number" id="unitPrice" >
-                                          <div class="input-group-append">
-                                              <span class="input-group-text">RWF</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text">Total Price</span>
-                                          </div>
-                                          <input class="form-control text-darker" placeholder="" type="number" id="price" readonly>
-                                          <div class="input-group-append">
-                                              <span class="input-group-text">RWF</span>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-md-6 mb-2">
-                                  <button type="button" class="btn btn-primary" id="saveSales">Make SALES</button>
-                              </div>
-                              <div class="col-md-6 mb-2">
-                                  <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-                              </div>
+                              <form class="col-md-12" id="sform">
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                                 <label for="pcategory">
+                                                     <span>Product category</span>
+                                                 </label>
+                                                 <select class="form-control" data-toggle="select"  name="pcategor" id="pcategory" required="required">
+                                                     <option>Product Category</option>
+                                                 </select>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <div class="">
+                                                 <label for="products">
+                                                     <span>Products</span>
+                                                 </label>
+                                                 <select class="form-control" data-toggle="select" name="products" id="products" required="required">
+                                                     <option>--Select Products--</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <div >
+                                                 <label for="unit">
+                                                     <span>UNIT</span>
+                                                 </label>
+                                                 <input class="form-control text-darker"  type="text" name="unit" id="unit" readonly required="required">
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <div>
+                                                 <label for="quantity">
+                                                     <span>Quantity</span>
+                                                 </label>
+                                                 <input class="form-control" placeholder="Quantity" type="number" name="quantity" id="quantity" required="required">
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group">
+                                             <div >
+                                                 <label for="unitPrice">
+                                                     <span>Unit price in (Rwf)</span>
+                                                 </label>
+                                                 <input class="form-control text-darker"  placeholder="unity price" type="number" name="unitPrice" id="unitPrice" required="required" >
 
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div class="form-group">
+                                             <div class="input-group input-group-merge">
+                                                 <div class="input-group-prepend">
+                                                     <span class="input-group-text">Total Price</span>
+                                                 </div>
+                                                 <input class="form-control text-darker" placeholder="" type="number" id="price" name="price" readonly required="required"  >
+                                                 <div class="input-group-append">
+                                                     <span class="input-group-text">RWF</span>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 mb-2">
+                                         <button type="button" class="btn btn-primary" id="saveSales">Make SALES</button>
+                                     </div>
+                                     <div class="col-md-6 mb-2">
+                                         <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
+                                     </div>
+                                 </div>
+                              </form>
                           </div>
                        </div>
                        <div class="col-md-6">
@@ -118,85 +114,6 @@
 </div>
 
 
-<!--Modal-->
-<div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default"
-     aria-hidden="true">
-    <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h6 class="modal-title" id="modal-title-default">Type your modal title</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <select class="form-control" data-toggle="select" id="pcategory">
-                                    <option>Product Category</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Product Name" type="text" id="pname">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Price" type="number" id="pprice">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <select class="form-control" data-toggle="select" id="punit">
-                                    <option value="UNIT">UNIT</option>
-                                    <option value="BOX">BOXED</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="input-group input-group-merge">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Quantity" type="number" id="pquantity">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="saveProduct">Save changes</button>
-                <button type="button" class="btn btn-link  ml-auto" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
 </div>
 <div data-th-replace="/Link/Script :: myScript"></div>
 <script>
@@ -245,10 +162,7 @@
     $(document).on("change","#pcategory",function () {
         var category=$(this).val();
         $("#products").empty();
-        $('#products').append($('<option>', {
-            value: '',
-            text : "--select product--"
-        }));
+
         $.each(products,function (i,item) {
             if(item.category.uuid===category){
                 $('#products').append($('<option>', {
@@ -274,6 +188,19 @@
         }
     })
 
+    $(document).on("change","#products",function () {
+        var puuid=$(this)
+        $.each( products,function (i,item) {
+
+            if(puuid.val()==item.uuid){
+                console.log(puuid.val())
+                console.log(item.uuid)
+                $("#unit").val(item.unit);
+                return;
+            }
+        })
+    })
+
 
     $(document).on("click","#saveSales",function(){
         var sales={
@@ -283,40 +210,55 @@
             "unitPrice":$("#unitPrice").val(),
             "totalPrice":$("#price").val()
         }
-        console.log(sales)
-        $.ajax({
-            url: 'sales/create/',
-            type: 'POST',
-            data: JSON.stringify(sales),
-            contentType: 'application/json',
-            success:function (data) {
-                console.log(data);
-              if(data.code==200){
-                  Swal.fire({
-                      type: 'success',
-                      title: 'Product is added successfully',
-                      showConfirmButton: false,
-                      timer: 1500
-                  })
-                  setTimeout(()=>{
-                      window.location.href="make_sales"
-                  },3000)
-              }else{
-                  Swal.fire({
-                      type: 'error',
-                      title: data.msg,
-                      showConfirmButton: false,
-                      timer: 1500
-                  })
-                  setTimeout(()=>{
-                      window.location.href="make_sales"
-                  },3000)
-              }
-            },
-            error:function () {
+        console.log($("#sform"))
+        if($("#sform").valid()){
+            $.ajax({
+                url: 'sales/create/',
+                type: 'POST',
+                data: JSON.stringify(sales),
+                contentType: 'application/json',
+                success:function (data) {
+                    console.log(data);
+                    if(data.code==200){
+                        Swal.fire({
+                            type: 'success',
+                            title: 'Sales is added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(()=>{
+                            window.location.href="make_sales"
+                        },3000)
+                    }else{
+                        Swal.fire({
+                            type: 'error',
+                            title: data.msg,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(()=>{
+                            window.location.href="make_sales"
+                        },3000)
+                    }
+                },
+                error:function () {
+                    Swal.fire({
+                        type: 'error',
+                        title: "Error occured",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+        }else{
+            Swal.fire({
+                type: 'error',
+                title: "The form is not valid",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
 
-            }
-        })
     })
 
 

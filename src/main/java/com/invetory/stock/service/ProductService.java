@@ -30,6 +30,10 @@ public class ProductService {
 		return productdao.findByUuidAndDeletedStatus(uuid,false);
 	}
 
+	public  Product findOne(long id){
+		return productdao.getOne(id);
+	}
+
 	public void delete(Product p){
 		productdao.delete(p);
 	}

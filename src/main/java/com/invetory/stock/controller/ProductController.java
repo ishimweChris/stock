@@ -82,6 +82,24 @@ public class ProductController {
 
 	}
 
+	@RequestMapping(value="quantity",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> addQuantity(@RequestBody Map<String,Object> params, HttpSession session, HttpServletRequest request){
+		Map<String,Object> map=new HashMap<>();
+		try{
+
+			Product product=productservice.findOne(Long.parseLong(params.get("pid").toString()));
+			product.setQuantity(product.getQuantity()+Double.parseDouble(params.get("qty").toString()));
+			productservice.save(product);
+			map.put("code",200);
+			map.put("object",productservice.save(product));
+			return new ResponseEntity<Object>(map, HttpStatus.OK);
+		}catch (Exception ex){
+			ex.printStackTrace();
+			return new ResponseEntity<Object>(map, HttpStatus.OK);
+		}
+
+	}
+
 	@RequestMapping(value="categories",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> viewProductCategory(HttpSession session, HttpServletRequest request){
 		Map<String,Object> map=new HashMap<>();

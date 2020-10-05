@@ -157,6 +157,7 @@ public class SalesController {
 
         }catch (Exception ex){
             ex.printStackTrace();
+            map.put("msg","Error occured,check if form is valid");
             return new ResponseEntity<Object>(map, HttpStatus.OK);
         }
 

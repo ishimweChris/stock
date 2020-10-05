@@ -1,5 +1,8 @@
 package com.invetory.stock.controller;
 
+import com.invetory.stock.domain.Expense;
+import com.invetory.stock.domain.Product;
+import com.invetory.stock.domain.Sales;
 import com.invetory.stock.service.ExpenseService;
 import com.invetory.stock.service.ProductService;
 import com.invetory.stock.service.SalesService;
@@ -29,14 +32,26 @@ public class WebController {
        try{
           if(option.contains("products_list")){
               model.addAttribute("products",productService.findByDeleted());
+
               return "pages/Products";
           }else if(option.equalsIgnoreCase("sales_list")){
               model.addAttribute("sales",salesService.findByDeleted());
+              double total=0;
+              for(Sales p: salesService.findByDeleted()){
+                  total=total+(p.getUnityPrice()*p.getQuantity());
+              }
+              model.addAttribute("total",total);
               return "pages/Sales";
           }else if(option.equalsIgnoreCase("make_sales")){
              return "pages/MakeSales";
           }else if(option.equalsIgnoreCase("expenses_list")){
               model.addAttribute("expenses",expenseService.findByDeleted());
+
+              double total=0;
+              for(Expense p: expenseService.findByDeleted()){
+                  total=total+p.getAmount();
+              }
+              model.addAttribute("total",total);
               return "pages/expenses";
           }else if(option.equalsIgnoreCase("income_list")){
               return "pages/Income";
